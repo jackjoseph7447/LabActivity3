@@ -10,6 +10,8 @@ class MainActivity : AppCompatActivity() {
 
     // Declare view properties - the first one is done for you
     lateinit var displayTextView: TextView
+    lateinit var nameText : EditText
+    lateinit var button : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,10 +19,21 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize with views defined in Layout - the first one is done for you
         displayTextView = findViewById(R.id.displayTextView)
+        nameText = findViewById(R.id.nameEditText)
+        button = findViewById(R.id.clickMeButton)
 
         
-        findViewById<Button>(R.id.clickMeButton).setOnClickListener {
-            displayTextView.text = "Hello, ${findViewById<EditText>(R.id.nameEditText).text}"
+        button.setOnClickListener {
+
+            if(nameText.text.isEmpty())
+            {
+                displayTextView.text = "Please enter a name"
+            }
+            else
+            {
+                displayTextView.text = "Hello, ${findViewById<EditText>(R.id.nameEditText).text}"
+            }
+
         }
 
 
